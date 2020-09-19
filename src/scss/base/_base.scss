@@ -11,6 +11,9 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+
   padding: 0 3rem;
   box-sizing: border-box;
 }
