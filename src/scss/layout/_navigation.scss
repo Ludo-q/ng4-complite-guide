@@ -1,0 +1,47 @@
+@import "../abstracts/variable";
+@import "../abstracts/extends";
+
+.nav {
+
+  display: flex;
+  background-color: $color-background-tertiary;
+
+  padding: 2rem 3rem;
+
+  &__header {
+    margin-right: 4rem;
+  }
+
+  &__brand {
+    @extend %link;
+
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  &__body {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__menu-primary {
+    display: flex;
+    @extend %u-list;
+  }
+
+  &__item {
+
+    &:not(:last-of-type) {
+      margin-right: 2rem;
+    }
+  }
+
+  &__link {
+    @extend %link;
+  }
+
+  &__menu-secondary {
+    @extend %u-list;
+  }
+}

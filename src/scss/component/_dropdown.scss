@@ -1,0 +1,21 @@
+@import "../abstracts/variable";
+@import "../abstracts/extends";
+
+.dropdown {
+
+  &__toggle {
+    @extend %link;
+  }
+
+  &__menu {
+    display: none;
+  }
+
+  &__item {
+
+  }
+
+  &__link {
+
+  }
+}

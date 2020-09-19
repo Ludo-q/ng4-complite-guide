@@ -1,0 +1,14 @@
+@import "../abstracts/variable";
+
+%link {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: $color-font-secondary;
+}
+
+%u-list {
+  list-style: none;
+  font-size: 1.5rem;
+  color: $color-font-secondary;
+}
