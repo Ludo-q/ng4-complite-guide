@@ -1,0 +1,32 @@
+@import "../abstracts/variable";
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  color: $color-font-primary;
+}
+
+.primary-heading {
+  text-transform: uppercase;
+  font-size: 4rem;
+  font-weight: 400;
+  letter-spacing: 2rem;
+
+  margin-bottom: 6rem;
+}
+
+.secondary-heading {
+  font-size: 2.5rem;
+  font-weight: 400;
+  letter-spacing: 3px;
+  color: $color-font-secondary;
+}
+
+
+.paragraph {
+  font-size: 1.6rem;
+
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
