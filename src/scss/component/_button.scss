@@ -20,12 +20,13 @@
     transform: translateY(-0.1rem);
   }
 
-  &:disabled {
-    background-color: $color-font-primary;
-  }
-
   &--green {
     background-color: $color-background-secondary;
     color: $color-font-secondary;
   }
+
+  &:disabled {
+    background-color: $color-font-primary;
+  }
+
 }

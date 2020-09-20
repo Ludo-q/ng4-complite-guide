@@ -1,0 +1,45 @@
+@import "../abstracts/variable";
+
+.card {
+  display: flex;
+  flex-direction: column;
+
+  padding: 2rem 4rem;
+
+  text-decoration: none;
+  color: $color-font-primary;
+
+  &:not(:last-of-type) {
+    margin-bottom: 2rem;
+  }
+
+  &__heading {
+    margin-right: 4rem;
+  }
+
+  &__photo {
+    width: 100%;
+    height: auto;
+  }
+
+  &--row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    border: 1px solid $color-border-primary;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: rgba($color-background-primary, .2);
+    }
+
+    &__footer {
+      max-width: 8rem;
+      max-height: 8rem;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+  }
+}
