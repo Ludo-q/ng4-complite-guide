@@ -1,5 +1,5 @@
 <section class="shopping-list-section">
-  <app-shopping-list-edit (ingredient)="onIngredientAdded($event)"></app-shopping-list-edit>
+  <app-shopping-list-edit (ingredientAdded)="onIngredientAdded($event)"></app-shopping-list-edit>
   <hr>
   <ul class="list">
     <li class="list__item" *ngFor="let ingredient of ingredients">
