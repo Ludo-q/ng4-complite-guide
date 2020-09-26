@@ -21,7 +21,7 @@
     </li>
   </ul>
   <div class="card__footer">
-    <p class="paragraph">Description</p>
+    <p class="paragraph" *ngIf="selectedRecipe">{{selectedRecipe.name}}</p>
     <p class="paragraph">Ingredient</p>
   </div>
 </div>
