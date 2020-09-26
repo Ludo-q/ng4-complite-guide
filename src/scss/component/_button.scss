@@ -25,6 +25,16 @@
     color: $color-font-secondary;
   }
 
+  &--red {
+    background-color: $color-background-primary;
+    color: $color-font-secondary;
+  }
+
+  &--grey {
+    background-color: $color-background-tertiary;
+    color: $color-font-secondary;
+  }
+
   &:disabled {
     background-color: $color-font-primary;
   }

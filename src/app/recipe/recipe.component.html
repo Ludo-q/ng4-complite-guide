@@ -1,10 +1,14 @@
 <section class="recipe-section">
   <app-recipe-list
     class="recipe-list-section"
-    (selectedRecipe)="getSelectedRecipe($event)"
+    (recipeWasSelected)="selectedRecipe = $event"
   ></app-recipe-list>
   <app-recipe-detail
     class="recipe-detail-section"
-    [selectedRecipe]="pushInSelectedItem"
+    *ngIf="selectedRecipe; else infoText"
+    [selectedRecipe]="selectedRecipe"
   ></app-recipe-detail>
+  <ng-template #infoText>
+    <p class="paragraph">Please select a recipe!</p>
+  </ng-template>
 </section>

@@ -1,13 +1,29 @@
 <form class="form">
   <div class="form__body">
     <label for="name" class="form__label">Name</label>
-    <input type="text" class="form__input" id="name">
-    <label for="amount" class="form__label">Name</label>
-    <input type="number" class="form__input" id="amount">
+    <input
+      type="text"
+      class="form__input"
+      id="name"
+      value="Test"
+      #nameInput
+    >
+    <label for="amount" class="form__label">Amount</label>
+    <input
+      type="number"
+      class="form__input"
+      id="amount"
+      value="100"
+      #amountInput
+    >
   </div>
   <div class="form__footer">
-    <button class="form__button" type="submit">Add</button>
-    <button class="form__button" type="button">Delete</button>
-    <button class="form__button" type="button">Clear</button>
+    <button
+      class="btn btn--green"
+      type="submit"
+      (click)="onAddIngredient()"
+    >Add</button>
+    <button class="btn btn--red" type="button">Delete</button>
+    <button class="btn btn--grey" type="button">Clear</button>
   </div>
 </form>

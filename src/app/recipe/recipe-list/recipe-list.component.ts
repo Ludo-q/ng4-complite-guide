@@ -17,15 +17,14 @@ export class RecipeListComponent implements OnInit {
       'https://cdn.loveandlemons.com/wp-content/uploads/2020/03/bean-recipes-1.jpg')
   ];
 
-  @Output() selectedRecipe = new EventEmitter<Recipe>();
+  @Output() recipeWasSelected = new EventEmitter<Recipe>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  getSelectedRecipe(selectedRecipe) {
-    this.selectedRecipe.emit(selectedRecipe);
-    console.log(selectedRecipe.name);
+  onRecipeSelected(recipe: Recipe) {
+    this.recipeWasSelected.emit(recipe);
   }
 }
