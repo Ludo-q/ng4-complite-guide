@@ -2,20 +2,8 @@
   <button class="btn btn--green u-m-b-small">New Recipe</button>
 </div>
 <div>
-  <a class="card card--row u-m-b-medium"
-     href="#"
-     *ngFor="let recipe of recipes"
-  >
-    <div class="card__heading">
-      <h4 class="ternary-heading u-m-b-small">{{recipe.name}}</h4>
-      <p class="paragraph">{{recipe.description}}</p>
-    </div>
-    <div class="card--row__footer">
-      <img
-        [src]="recipe.imagePath"
-        alt="Img for {{recipe.name}}"
-        class="card__photo">
-    </div>
-  </a>
-  <app-recipe-item></app-recipe-item>
+  <app-recipe-item
+    *ngFor="let recipeEl of recipes"
+    [recipe]="recipeEl"
+  ></app-recipe-item>
 </div>
