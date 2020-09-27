@@ -13,7 +13,7 @@
 
   background-color: $color-background-light;
   border-radius: 1rem;
-  box-shadow: 0 1rem 1rem rgba($color-font-tertiary, .2);
+  box-shadow: $box-shadow-medium;
 
   &__body {
     display: grid;

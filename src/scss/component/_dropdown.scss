@@ -2,13 +2,43 @@
 @import "../abstracts/extends";
 
 .dropdown {
+  position: relative;
 
   &__toggle {
     @extend %link;
+
+    display: flex;
+    align-items: center;
+    width: max-content;
+
+    &:after {
+      content: url("/assets/images/svg/keyboard_arrow_down-24px.svg");
+      margin-right: .5rem;
+      width: 30px;
+      height: 30px;
+    }
   }
 
   &__menu {
     display: none;
+    flex-direction: column;
+
+    position: absolute;
+    top: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: max-content;
+    padding: 1rem 2rem;
+
+    background-color: white;
+    box-shadow: $box-shadow-medium;
+    border-radius: 1rem;
+
+  }
+
+  &__toggle.open + &__menu {
+    display: flex;
   }
 
   &__item {
