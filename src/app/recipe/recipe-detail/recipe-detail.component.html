@@ -17,7 +17,9 @@
       >Manage</a>
       <ul class="dropdown__menu" >
         <li class="dropdown__item">
-          <a href="#" class="dropdown__link">To Shopping List</a>
+          <a class="dropdown__link"
+             (click)="onAddToShoppingList()"
+          >To Shopping List</a>
         </li>
         <li class="dropdown__item">
           <a href="#" class="dropdown__link">Edit Recipe</a>
@@ -30,6 +32,12 @@
   </ul>
   <div class="card__footer">
     <p class="paragraph">{{selectedRecipe.description}}</p>
-    <p class="paragraph">Ingredient</p>
+    <ul class="list-group">
+      <li class="list-group__item"
+          *ngFor="let ingredient of selectedRecipe.ingredients"
+      >
+        {{ingredient.name}} &mdash; {{ingredient.amount}}
+      </li>
+    </ul>
   </div>
 </div>
