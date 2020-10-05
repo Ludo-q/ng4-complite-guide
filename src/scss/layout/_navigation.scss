@@ -6,9 +6,11 @@
   display: flex;
   background-color: $color-background-tertiary;
 
-  padding: 2rem 3rem;
+  padding: 0 3rem;
 
   &__header {
+    display: flex;
+    align-items: center;
     margin-right: 4rem;
   }
 
@@ -39,9 +41,18 @@
 
   &__link {
     @extend %link;
+    display: block;
+    padding: 2rem;
+
+    &.active {
+      background-color: #abacae;
+      color: #fff;
+    }
   }
 
   &__menu-secondary {
     @extend %u-list;
+    display: flex;
+    align-items: center;
   }
 }
