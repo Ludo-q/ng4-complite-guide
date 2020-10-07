@@ -40,6 +40,19 @@ export class RecipeService {
     return this.recipes.slice();
   }
 
+  getRecipeByName(name: string) {
+    for (const recipe of this.recipes) {
+      if (recipe.name === name) {
+        return recipe;
+      }
+    }
+    return null;
+  }
+
+  getRecipeByID(id: number): Recipe {
+    return this.recipes[id];
+  }
+
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.shoppingListService.addIngredients(ingredients);
   }
