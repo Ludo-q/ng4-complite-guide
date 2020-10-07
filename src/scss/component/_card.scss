@@ -35,6 +35,10 @@
       background-color: rgba($color-background-primary, .2);
     }
 
+    &.active {
+      background-color: rgba($color-background-primary, .4);
+    }
+
     &__footer {
       max-width: 8rem;
       max-height: 8rem;
