@@ -1,29 +1,43 @@
-<form class="form">
+<form class="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
   <div class="form__body">
     <label for="name" class="form__label">Name</label>
     <input
       type="text"
       class="form__input"
       id="name"
+      name="name"
       value="Test"
-      #nameInput
+      ngModel
+      required
     >
     <label for="amount" class="form__label">Amount</label>
     <input
       type="number"
       class="form__input"
       id="amount"
+      name="amount"
       value="100"
-      #amountInput
+      ngModel
+      required
+      pattern="^[1-9]+[0-9]*$"
     >
   </div>
   <div class="form__footer">
     <button
       class="btn btn--green"
       type="submit"
-      (click)="onAddItem()"
-    >Add</button>
-    <button class="btn btn--red" type="button">Delete</button>
-    <button class="btn btn--grey" type="button">Clear</button>
+      [disabled]="!f.valid"
+    >{{editMode ? 'Update' : 'Add'}}</button>
+    <button
+      class="btn btn--red"
+      type="button"
+      *ngIf="editMode"
+      (click)="onDelete()"
+    >Delete</button>
+    <button
+      class="btn btn--grey"
+      type="button"
+      (click)="onClear()"
+    >Clear</button>
   </div>
 </form>

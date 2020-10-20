@@ -1,9 +1,12 @@
 <section class="shopping-list-section">
   <app-shopping-list-edit></app-shopping-list-edit>
   <hr>
-  <ul class="list">
-    <li class="list__item" *ngFor="let ingredient of ingredients">
-      <button class="list_button">{{ingredient.name}} ({{ingredient.amount}})</button>
+  <ul class="list-button">
+    <li class="list-button__item" *ngFor="let ingredient of ingredients; let i = index">
+      <button
+        class="btn btn--grey btn--list"
+        (click)="onEditItem(i)"
+      >{{ingredient.name}} <span>({{ingredient.amount}})</span></button>
     </li>
   </ul>
 </section>
