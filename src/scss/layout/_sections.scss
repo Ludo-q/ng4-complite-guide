@@ -5,9 +5,10 @@
 }
 
 .recipe-section {
-  display: flex;
-  justify-content: space-between;
-  padding: 3rem;
+  display: grid;
+  grid-template-columns: 1.5fr 2fr;
+  padding: 4rem 0;
+  column-gap: 50px;
 
   margin-bottom: 6rem;
 }
@@ -15,5 +16,10 @@
 .recipe-list-section,
 .recipe-detail-section {
   flex: 0 0 50%;
+}
 
+@media screen and (max-width: 1200px){
+  .recipe-section {
+    grid-template-columns: 1fr 1fr;
+  }
 }

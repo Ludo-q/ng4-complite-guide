@@ -8,7 +8,15 @@
         <a
           class="nav__link"
           routerLinkActive="active"
+          *ngIf="isAuthenticated"
           [routerLink]="['/recipes']">Recipes</a>
+      </li>
+      <li class="nav__item">
+        <a
+          class="nav__link"
+          routerLinkActive="active"
+          *ngIf="!isAuthenticated"
+          [routerLink]="['/auth']">Authenticate</a>
       </li>
       <li class="nav__item" routerLinkActive="active">
         <a
@@ -18,17 +26,24 @@
       </li>
     </ul>
     <ul class="nav__menu-secondary">
-      <li class="dropdown">
+      <li class="nav__item">
+        <a
+          class="nav__link"
+          *ngIf="isAuthenticated"
+          (click)="onLogout()"
+        >Logout</a>
+      </li>
+      <li class="dropdown" *ngIf="isAuthenticated">
         <a
           class="dropdown__toggle"
           appDropdown
         >Manage</a>
         <ul class="dropdown__menu">
           <li class="dropdown__item">
-            <a class="dropdown__link">Save Data</a>
+            <a class="dropdown__link" (click)="onSaveData()">Save Data</a>
           </li>
           <li class="dropdown__item">
-            <a class="dropdown__link">Fetch Data</a>
+            <a class="dropdown__link" (click)="onFetchData()">Fetch Data</a>
           </li>
         </ul>
       </li>

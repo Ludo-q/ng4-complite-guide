@@ -8,30 +8,47 @@ import {ShoppingListService} from '../shopping-list/shopping-list.service';
 @Injectable()
 export class RecipeService {
 
-  recipeSelected = new Subject<Recipe>();
+  recipesChanged = new Subject<Recipe[]>();
 
-  private recipes: Recipe[] = [
-    new Recipe(
-      'Tasty Schnitzel',
-      'A super-tasty Schnitzel - just awesome',
-      // tslint:disable-next-line:max-line-length
-      'https://steemitimages.com/p/o1AJ9qDyyJNSpZWhUgGYc3MngFqoAMfAtHcWN7TdVVgaqxn1U?format=match&mode=fit&width=640',
-      [
-        new Ingredient('Meat', 1),
-        new Ingredient('French freeze', 20)
-      ]),
-    new Recipe(
-      'Big Fat Burger',
-      'What else you need to say?',
-      // tslint:disable-next-line:max-line-length
-      'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2015/5/5/0/FNM_060115-Fatbuger-Recipe_s4x3.jpg.rend.hgtvcom.826.620.suffix/1431449537270.jpeg',
-      [
-        new Ingredient('Buns', 2),
-        new Ingredient('Meat', 1)
-      ])
-  ];
+  // private recipes: Recipe[] = [
+  //   new Recipe(
+  //     'Tasty Schnitzel',
+  //     'A super-tasty Schnitzel - just awesome',
+  //     // tslint:disable-next-line:max-line-length
+  //     'https://steemitimages.com/p/o1AJ9qDyyJNSpZWhUgGYc3MngFqoAMfAtHcWN7TdVVgaqxn1U?format=match&mode=fit&width=640',
+  //     [
+  //       new Ingredient('Meat', 1),
+  //       new Ingredient('French freeze', 20)
+  //     ]),
+  //   new Recipe(
+  //     'Big Fat Burger',
+  //     'What else you need to say?',
+  //     // tslint:disable-next-line:max-line-length
+  //     'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2015/5/5/0/FNM_060115-Fatbuger-Recipe_s4x3.jpg.rend.hgtvcom.
+  //     7826.620.suffix/1431449537270.jpeg',
+  //     [
+  //       new Ingredient('Buns', 2),
+  //       new Ingredient('Meat', 1)
+  //     ]),
+  //   new Recipe(
+  //     'Kek Shtëpie',
+  //     'Kek shtëpie me kos, receta e shijshme dhe me pak shpenzime',
+  //     // tslint:disable-next-line:max-line-length
+  //     'https://tirananews.al/wp-content/uploads/2019/05/Kek.jpg',
+  //     [
+  //       new Ingredient('Veze', 2),
+  //       new Ingredient('Sode Buke', 1)
+  //     ])
+  // ];
+
+  private recipes: Recipe[] = [];
 
   constructor(private shoppingListService: ShoppingListService) {
+  }
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
   }
 
   getRecipes() {
@@ -56,5 +73,21 @@ export class RecipeService {
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.shoppingListService.addIngredients(ingredients);
+  }
+
+  addRecipe(recipe: Recipe): number {
+    this.recipes.push(recipe);
+    this.recipesChanged.next(this.recipes.slice());
+    return this.recipes.length - 1;
+  }
+
+  updateRecipe(index: number, newRecipe: Recipe) {
+    this.recipes[index] = newRecipe;
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  deleteRecipe(index: number) {
+    this.recipes.splice(index, 1);
+    this.recipesChanged.next(this.recipes.slice());
   }
 }

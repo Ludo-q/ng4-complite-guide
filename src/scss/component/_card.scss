@@ -14,12 +14,16 @@
   }
 
   &__heading {
-    margin-right: 4rem;
+    //margin-right: 4rem;
   }
 
   &__photo {
     width: 100%;
     height: auto;
+  }
+
+  &__body {
+    list-style: none;
   }
 
   &--row {
@@ -46,5 +50,9 @@
       overflow: hidden;
     }
 
+  }
+
+  &--img {
+    padding: 0;
   }
 }

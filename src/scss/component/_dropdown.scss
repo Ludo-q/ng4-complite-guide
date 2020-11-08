@@ -36,6 +36,8 @@
     box-shadow: $box-shadow-medium;
     border-radius: 1rem;
 
+    list-style: none;
+
   }
 
   &__toggle.open + &__menu {
@@ -50,6 +52,6 @@
     display: inline-block;
     cursor: pointer;
     padding: 1rem 0;
-    color: $color-font-primary;
+    color: $color-font-primary !important;
   }
 }

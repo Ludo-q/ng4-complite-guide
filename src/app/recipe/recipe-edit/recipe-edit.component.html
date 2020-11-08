@@ -1,2 +1,79 @@
-<h3 class="ternary-heading" *ngIf="editMode">recipe-edit in EDIT MODE</h3>
-<h3 class="ternary-heading" *ngIf="!editMode">recipe-edit in NEW MODE</h3>
+<form
+  class="form form--full"
+  [formGroup]="recipeForm"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="form__footer u-m-b-medium">
+    <button
+      type="submit"
+      class="btn btn--green"
+      [disabled]="!recipeForm.valid"
+    >Save</button>
+    <button
+      type="button"
+      class="btn btn--red"
+      (click)="onCancel()"
+    >Cancel</button>
+  </div>
+  <div class="form__body">
+    <label for="name" class="form__label">Name</label>
+    <input
+      type="text"
+      class="form__input"
+      id="name"
+      formControlName="name"
+    >
+    <label for="imagePath" class="form__label">Image URL</label>
+    <input
+      type="text"
+      class="form__input"
+      id="imagePath"
+      formControlName="imagePath"
+      #imagePath
+    >
+    <img [src]="imagePath.value" class="form__img">
+    <label for="description" class="form__label">Description</label>
+    <textarea
+      id="description"
+      class="form__input"
+      rows="6"
+      formControlName="description"
+    ></textarea>
+    <div
+      class="form__input--full list-div"
+      formArrayName="ingredients"
+    >
+      <h3 class="ternary-heading u-center-text">
+        Ingredients
+      </h3>
+      <div
+        class="list-div__item"
+        *ngFor="let ingredientCtrl of controls; let i = index"
+        [formGroupName]="i"
+      >
+        <input
+          type="text"
+          class="form__input"
+          formControlName="name"
+        >
+        <input
+          type="text"
+          class="form__input"
+          formControlName="amount"
+        >
+        <button
+          class="btn btn--red"
+          type="button"
+          (click)="onDeleteIngredient(i)"
+        >X</button>
+      </div>
+      <button
+        class="btn btn--green u-m-t-small"
+        type="button"
+        (click)="onAddIngredient()"
+      >
+        Add ingredient
+      </button>
+    </div>
+  </div>
+</form>

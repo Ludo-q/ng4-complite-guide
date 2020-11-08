@@ -5,6 +5,9 @@ import {ShoppingListComponent} from './shopping-list/shopping-list.component';
 import {RecipeDetailComponent} from './recipe/recipe-detail/recipe-detail.component';
 import {RecipeStartComponent} from './recipe/recipe-start/recipe-start.component';
 import {RecipeEditComponent} from './recipe/recipe-edit/recipe-edit.component';
+import {RecipesResolverService} from './recipe/recipes-resolver.service';
+import {AuthComponent} from './auth/auth.component';
+import {AuthGuard} from './auth/auth.guard';
 
 
 const routes: Routes = [
@@ -12,16 +15,26 @@ const routes: Routes = [
   {
     path: 'recipes',
     component: RecipeComponent,
+    canActivate: [AuthGuard],
     children: [
       {path: '', component: RecipeStartComponent},
       {path: 'new', component: RecipeEditComponent},
-      {path: ':id', component: RecipeDetailComponent},
-      {path: ':id/edit', component: RecipeEditComponent}
+      {
+        path: ':id',
+        component: RecipeDetailComponent,
+        resolve: [RecipesResolverService]
+      },
+      {
+        path: ':id/edit',
+        component: RecipeEditComponent,
+        resolve: [RecipesResolverService]
+      },
       // {path: 'message', component: DisplayMessageComponent},
       // {path: ':name', component: RecipeDetailComponent},
     ]
   },
   {path: 'shopping-list', component: ShoppingListComponent},
+  {path: 'auth', component: AuthComponent},
   {path: '**', redirectTo: ''}
 ];
 

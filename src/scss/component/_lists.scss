@@ -1,15 +1,40 @@
 @import "../abstracts/variable";
 @import "../abstracts/extends";
 
+.list-group,
 .list-button {
   @extend %u-list;
-  padding: 30px 50px;
+  padding: 3rem 5rem;
 
   &__item {
     width: 50%;
   }
 
   &__item:not(:last-of-type) {
-    margin-bottom: 15px;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.list-group {
+  color: $color-font-primary;
+}
+
+.list-div {
+  margin-top: 2rem;
+
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  &__item {
+    display: grid;
+    grid-template-rows: 1fr;
+    row-gap: 2rem;
+
+    & > button,
+    & > input {
+      justify-self: center;
+    }
   }
 }

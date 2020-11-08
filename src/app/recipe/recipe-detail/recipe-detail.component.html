@@ -1,44 +1,49 @@
-<div class="card">
+<div class="card card--img">
   <div class="card__heading u-m-b-medium">
     <img
       [src]="selectedRecipe.imagePath"
       alt="Img for {{selectedRecipe.name}}"
       class="card__photo">
-    <h2 class="secondary-heading secondary-heading--grey">
+    <h2 class="secondary-heading secondary-heading--grey u-center-text u-m-t-small">
       {{selectedRecipe.name}}
     </h2>
   </div>
-  <ul class="card__body u-m-b-medium">
-    <li class="dropdown">
-      <a
-        class="dropdown__toggle btn btn--green"
-        appDropdown
-      >Manage</a>
-      <ul class="dropdown__menu" >
-        <li class="dropdown__item">
-          <a class="dropdown__link"
-             (click)="onAddToShoppingList()"
-          >To Shopping List</a>
-        </li>
-        <li class="dropdown__item">
-          <a class="dropdown__link"
-             (click)="onRecipeEdit()"
-          >Edit Recipe</a>
-        </li>
-        <li class="dropdown__item">
-          <a class="dropdown__link">Delete Recipe</a>
-        </li>
-      </ul>
-    </li>
-  </ul>
-  <div class="card__footer">
-    <p class="paragraph">{{selectedRecipe.description}}</p>
-    <ul class="list-group">
-      <li class="list-group__item"
-          *ngFor="let ingredient of selectedRecipe.ingredients"
-      >
-        {{ingredient.name}} &mdash; {{ingredient.amount}}
+  <div class="">
+    <ul class="card__body u-m-b-medium">
+      <li class="dropdown">
+        <a
+          class="dropdown__toggle btn btn--green"
+          appDropdown
+        >Manage</a>
+        <ul class="dropdown__menu" >
+          <li class="dropdown__item">
+            <a class="dropdown__link"
+               (click)="onAddToShoppingList()"
+            >To Shopping List</a>
+          </li>
+          <li class="dropdown__item">
+            <a class="dropdown__link"
+               (click)="onRecipeEdit()"
+            >Edit Recipe</a>
+          </li>
+          <li class="dropdown__item">
+            <a
+              class="dropdown__link"
+              (click)="onRecipeDelete()"
+            >Delete Recipe</a>
+          </li>
+        </ul>
       </li>
     </ul>
+    <div class="card__footer">
+      <p class="paragraph">{{selectedRecipe.description}}</p>
+      <ul class="list-group">
+        <li class="list-group__item"
+            *ngFor="let ingredient of selectedRecipe.ingredients"
+        >
+          {{ingredient.name}} &mdash; {{ingredient.amount}}
+        </li>
+      </ul >
+    </div>
   </div>
 </div>
