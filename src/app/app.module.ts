@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {StoreModule} from '@ngrx/store';
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -21,6 +22,7 @@ import { ShortenPipe } from './pipe-custom.pipe';
 import {AuthComponent} from './auth/auth.component';
 import {LoadingSpinnerComponent} from './shared/loading-spinner/loading-spinner.component';
 import {AuthInterceptorService} from './auth/auth-interceptor.service';
+import {shoppingListReducer} from './shopping-list/store/shopping-list.reducer';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import {AuthInterceptorService} from './auth/auth-interceptor.service';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({shoppingList: shoppingListReducer})
   ],
   providers: [
     ShoppingListService,
