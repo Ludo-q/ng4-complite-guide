@@ -14,14 +14,14 @@ import {RecipeListComponent} from './recipe/recipe-list/recipe-list.component';
 import {RecipeItemComponent} from './recipe/recipe-list/recipe-item/recipe-item.component';
 import {RecipeDetailComponent} from './recipe/recipe-detail/recipe-detail.component';
 import {DropdownDirective} from './shared/dropdown.derective';
-import { RecipeStartComponent } from './recipe/recipe-start/recipe-start.component';
-import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
+import {RecipeStartComponent} from './recipe/recipe-start/recipe-start.component';
+import {RecipeEditComponent} from './recipe/recipe-edit/recipe-edit.component';
 import {RecipeService} from './recipe/recipe.service';
-import { ShortenPipe } from './pipe-custom.pipe';
+import {ShortenPipe} from './pipe-custom.pipe';
 import {AuthComponent} from './auth/auth.component';
 import {LoadingSpinnerComponent} from './shared/loading-spinner/loading-spinner.component';
 import {AuthInterceptorService} from './auth/auth-interceptor.service';
-import {shoppingListReducer} from './shopping-list/store/shopping-list.reducer';
+import * as fromApp from './store/app.reducer';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,7 @@ import {shoppingListReducer} from './shopping-list/store/shopping-list.reducer';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({shoppingList: shoppingListReducer})
+    StoreModule.forRoot(fromApp.appReducer),
   ],
   providers: [
     RecipeService,
