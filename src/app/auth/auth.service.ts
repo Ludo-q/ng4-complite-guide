@@ -124,7 +124,7 @@ export class AuthService {
     if (loadedUser.token) {
       // this.user.next(loadedUser);
       this.store.dispatch(
-        new AuthActions.Login({
+        new AuthActions.AuthenticateSuccess({
           email: loadedUser.email,
           userId: loadedUser.id,
           token: loadedUser.token,
@@ -138,7 +138,6 @@ export class AuthService {
   logout() {
     // this.user.next(null);
     this.store.dispatch(new AuthActions.Logout());
-    this.route.navigate(['/auth']);
     localStorage.removeItem('userData');
     if (this.tokenExpirationTimer) {
       clearInterval(this.tokenExpirationTimer);
@@ -170,7 +169,7 @@ export class AuthService {
 
     // this.user.next(user);
     this.store.dispatch(
-      new AuthActions.Login({
+      new AuthActions.AuthenticateSuccess({
         email,
         userId,
         token,
