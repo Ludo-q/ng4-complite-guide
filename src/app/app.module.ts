@@ -14,10 +14,11 @@ import {RecipeItemComponent} from './recipe/recipe-list/recipe-item/recipe-item.
 import {RecipeDetailComponent} from './recipe/recipe-detail/recipe-detail.component';
 import {DropdownDirective} from './shared/dropdown.derective';
 import {ShoppingListService} from './shopping-list/shopping-list.service';
-import { RecipeStartComponent } from './recipe/recipe-start/recipe-start.component';
-import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
+import {RecipeStartComponent} from './recipe/recipe-start/recipe-start.component';
+import {RecipeEditComponent} from './recipe/recipe-edit/recipe-edit.component';
+import {AlertComponent} from './shared/alert/alert.component';
 import {RecipeService} from './recipe/recipe.service';
-import { ShortenPipe } from './pipe-custom.pipe';
+import {ShortenPipe} from './pipe-custom.pipe';
 import {AuthComponent} from './auth/auth.component';
 import {LoadingSpinnerComponent} from './shared/loading-spinner/loading-spinner.component';
 import {AuthInterceptorService} from './auth/auth-interceptor.service';
@@ -32,6 +33,7 @@ import {AuthInterceptorService} from './auth/auth-interceptor.service';
     RecipeListComponent,
     RecipeItemComponent,
     RecipeDetailComponent,
+    AlertComponent,
     DropdownDirective,
     RecipeStartComponent,
     RecipeEditComponent,
