@@ -7,11 +7,11 @@
 <!--    {{error}}-->
 <!--  </p>-->
 <!--</div>-->
-<app-alert [message]="error"
-           *ngIf="error"
-           (close)="onHandleError()"
-></app-alert>
-
+<!--<app-alert [message]="error"-->
+<!--           *ngIf="error"-->
+<!--           (close)="onHandleError()"-->
+<!--&gt;</app-alert>-->
+<ng-template appPlaceholder></ng-template>
 <form
   *ngIf="!isLoading"
   class="form"

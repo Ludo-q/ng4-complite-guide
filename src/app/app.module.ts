@@ -22,6 +22,7 @@ import {ShortenPipe} from './pipe-custom.pipe';
 import {AuthComponent} from './auth/auth.component';
 import {LoadingSpinnerComponent} from './shared/loading-spinner/loading-spinner.component';
 import {AuthInterceptorService} from './auth/auth-interceptor.service';
+import {PlaceholderDirective} from './shared/placeholder/placeholder.directive';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {AuthInterceptorService} from './auth/auth-interceptor.service';
     RecipeDetailComponent,
     AlertComponent,
     DropdownDirective,
+    PlaceholderDirective,
     RecipeStartComponent,
     RecipeEditComponent,
     AuthComponent,
@@ -43,10 +45,10 @@ import {AuthInterceptorService} from './auth/auth-interceptor.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule,
   ],
   providers: [
     ShoppingListService,
@@ -57,7 +59,10 @@ import {AuthInterceptorService} from './auth/auth-interceptor.service';
       multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    AlertComponent
+  ]
 })
 export class AppModule {
 }
