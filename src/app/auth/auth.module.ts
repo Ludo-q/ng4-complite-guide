@@ -11,7 +11,7 @@ import {CommonModule} from '@angular/common';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule.forChild([{path: 'auth', component: AuthComponent}]),
+    RouterModule.forChild([{path: '', component: AuthComponent}]),
     ShareModule,
   ],
 })
