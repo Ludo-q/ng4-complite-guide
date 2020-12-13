@@ -8,11 +8,13 @@ import {HeaderComponent} from './header/header.component';
 import {ShareModule} from './shared/share.module';
 import {CoreModule} from './core.module';
 import {LoggingService} from './logging.service';
+import {ShortenPipe} from './pipe-custom.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    ShortenPipe
   ],
   imports: [
     BrowserModule,
