@@ -17,7 +17,7 @@ import {ShortenPipe} from './pipe-custom.pipe';
     ShortenPipe
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     AppRoutingModule,
     ShareModule,
