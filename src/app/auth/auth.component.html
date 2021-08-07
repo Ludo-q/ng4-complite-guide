@@ -1,30 +1,23 @@
-<app-loading-spinner *ngIf="isLoading">
-</app-loading-spinner>
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
 
-<!--<div class="error u-m-t-small u-m-b-small"-->
-<!--     *ngIf="error">-->
-<!--  <p class="error__text">-->
-<!--    {{error}}-->
-<!--  </p>-->
-<!--</div>-->
-<!--<app-alert [message]="error"-->
-<!--           *ngIf="error"-->
-<!--           (close)="onHandleError()"-->
-<!--&gt;</app-alert>-->
-<ng-template appPlaceholder></ng-template>
-<form
-  *ngIf="!isLoading"
-  class="form"
-  #authForm="ngForm"
-  (ngSubmit)="onSubmit(authForm)"
->
+<div class="error" *ngIf="error">
+  <p class="error__text">
+    {{error}}
+  </p>
+</div>
+
+<form class="form"
+      *ngIf="!isLoading"
+      #authForm="ngForm"
+      (ngSubmit)="onSubmit(authForm)">
   <div class="form__body u-m-b-medium">
     <label for="email" class="form__label">Email</label>
     <input
+      class="form__input"
       type="email"
       id="email"
       name="email"
-      class="form__input"
+      autocomplete="username"
       ngModel
       required
       email
@@ -32,25 +25,27 @@
 
     <label for="password" class="form__label">Password</label>
     <input
+      class="form__input"
       type="password"
       id="password"
       name="password"
-      class="form__input"
+      autocomplete="current-password"
+      minlength="6"
       ngModel
       required
-      minlength="6"
     >
   </div>
 
   <div class="form__footer">
-    <button
-      class="btn btn--green"
-      type="submit"
-      [disabled]="!authForm.valid"
-    >{{isLoginMode ? 'Login' : 'Sign Up'}}</button>
     <button class="btn btn--green"
-            (click)="onSwitchMode()"
+            type="submit"
+            [disabled]="!authForm.valid">
+      {{isLoginMode ? 'Login' : 'Sign up'}}
+    </button>
+    <button class="btn btn--green"
             type="button"
-    >Switch to {{!isLoginMode ? 'Login' : 'Sign Up'}}</button>
+            (click)="onSwitchMode()">
+      Switch to {{isLoginMode ? 'sing up' : 'login'}}
+    </button>
   </div>
 </form>

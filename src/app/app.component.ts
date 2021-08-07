@@ -1,8 +1,7 @@
 import {Component, OnInit, Inject, PLATFORM_ID} from '@angular/core';
-import {isPlatformBrowser} from '@angular/common';
 
-import {AuthService} from './auth/auth.service';
 import {LoggingService} from './logging.service';
+import {AuthService} from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -19,9 +18,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (isPlatformBrowser(this.platformId)) {
-      this.authService.autoLogin();
-    }
-    this.loggingService.printLog('Hello from AppComponent ngOnInit()');
+    this.authService.autoSignIn();
   }
 }

@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {Router} from '@angular/router';
+import {HttpClient, HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import {environment} from '../../environments/environment';
 import {catchError, tap} from 'rxjs/operators';
 import {BehaviorSubject, throwError} from 'rxjs';
-
-import {User} from './user.model';
-import {environment} from '../../environments/environment';
+import {UserModel} from './user.model';
+import {Router} from '@angular/router';
 
 export interface AuthResponseData {
   idToken: string;
@@ -13,24 +12,32 @@ export interface AuthResponseData {
   refreshToken: string;
   expiresIn: string;
   localId: string;
-  registered?: boolean;
+  registered?: string;
 }
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
 
-  user = new BehaviorSubject<User>(null);
+  user = new BehaviorSubject<UserModel>(null);
   private tokenExpirationTimer: any;
 
+  constructor(
+    private httpClient: HttpClient,
+    private router: Router
+  ) {
+  }
+
   private static handleError(errorResponse: HttpErrorResponse) {
-    let errorMessage = 'An unknown error occurred !!!';
+    let errorMessage = 'An unknown error occurred!!!';
 
     if (!errorResponse.error || !errorResponse.error.error) {
       return throwError(errorMessage);
     }
+
     switch (errorResponse.error.error.message) {
+      // for sign up
       case 'EMAIL_EXISTS':
-        errorMessage = 'The email address is already in use by another account !!!';
+        errorMessage = 'The email address is already in use by another account.';
         break;
       case 'OPERATION_NOT_ALLOWED':
         errorMessage = 'Password sign-in is disabled for this project.';
@@ -38,8 +45,9 @@ export class AuthService {
       case 'TOO_MANY_ATTEMPTS_TRY_LATER':
         errorMessage = 'We have blocked all requests from this device due to unusual activity. Try again later.';
         break;
+      // for sign in
       case 'EMAIL_NOT_FOUND':
-        errorMessage = 'There is no user record corresponding to this identifier. The user may have been deleted.';
+        errorMessage = ' There is no user record corresponding to this identifier. The user may have been deleted.';
         break;
       case 'INVALID_PASSWORD':
         errorMessage = 'The password is invalid or the user does not have a password.';
@@ -52,15 +60,23 @@ export class AuthService {
     return throwError(errorMessage);
   }
 
-  constructor(
-    private http: HttpClient,
-    private route: Router
-  ) {
+  private handleAuthentication(email: string, localId: string, idToken: string, expiresIn: number) {
+    const expirationTokenDate = new Date(
+      new Date().getTime() + (expiresIn * 1000)
+    );
+
+    const newUser = new UserModel(
+      email, localId, idToken, expirationTokenDate
+    );
+
+    this.user.next(newUser);
+    this.autoLogout(expiresIn);
+    localStorage.setItem('userData', JSON.stringify(newUser));
   }
 
   signUp(email: string, password: string) {
-    return this.http.post<AuthResponseData>(
-      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + environment.firebaseAPIKey,
+    return this.httpClient.post<AuthResponseData>(
+      `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.firebaseAPIKey}`,
       {
         email,
         password,
@@ -68,51 +84,31 @@ export class AuthService {
       }
     ).pipe(
       catchError(AuthService.handleError),
-      tap(resData => {
+      tap(respData => {
         this.handleAuthentication(
-          resData.email,
-          resData.localId,
-          resData.idToken,
-          +resData.expiresIn
+          respData.email,
+          respData.localId,
+          respData.idToken,
+          +respData.expiresIn
         );
       })
     );
   }
 
-  login(email: string, password: string) {
-    return this.http.post<AuthResponseData>(
-      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + environment.firebaseAPIKey,
-      {
-        email,
-        password,
-        returnSecureToken: true
-      }
-    ).pipe(
-      catchError(AuthService.handleError),
-      tap(resData => {
-        this.handleAuthentication(
-          resData.email,
-          resData.localId,
-          resData.idToken,
-          +resData.expiresIn
-        );
-      })
-    );
-  }
-
-  autoLogin() {
+  autoSignIn() {
     const userData: {
       email: string,
       id: string,
+      // tslint:disable-next-line:variable-name
       _token: string,
-      _tokenExpirationDate: string
+      // tslint:disable-next-line:variable-name
+      _tokenExpirationDate: Date
     } = JSON.parse(localStorage.getItem('userData'));
-
     if (!userData) {
       return;
     }
 
-    const loadedUser = new User(
+    const loadedUser = new UserModel(
       userData.email,
       userData.id,
       userData._token,
@@ -126,38 +122,42 @@ export class AuthService {
     }
   }
 
+  signIn(email: string, password: string) {
+    return this.httpClient.post<AuthResponseData>(
+      `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.firebaseAPIKey}`,
+      {
+        email,
+        password,
+        returnSecureToken: true
+      }
+    ).pipe(
+      catchError(AuthService.handleError),
+      tap(respData => {
+        this.handleAuthentication(
+          respData.email,
+          respData.localId,
+          respData.idToken,
+          +respData.expiresIn
+        );
+      })
+    );
+  }
+
+  autoLogout(expirationTime: number) {
+    this.tokenExpirationTimer = setTimeout(() => {
+      this.logout();
+    }, expirationTime);
+  }
+
   logout() {
     this.user.next(null);
-    this.route.navigate(['/auth']);
+    this.router.navigate(['/auth']);
     localStorage.removeItem('userData');
+
     if (this.tokenExpirationTimer) {
-      clearInterval(this.tokenExpirationTimer);
+      clearTimeout(this.tokenExpirationTimer);
     }
 
     this.tokenExpirationTimer = null;
-  }
-
-  autoLogout(expirationDuration: number) {
-    console.log(expirationDuration);
-    this.tokenExpirationTimer = setTimeout(() => {
-      this.logout();
-    }, expirationDuration);
-
-    this.tokenExpirationTimer = null;
-  }
-
-  private handleAuthentication(
-    email: string, userId: string, token: string, expiresIn: number
-  ) {
-    const expirationDate = new Date(
-      new Date().getTime() + expiresIn * 1000
-    );
-    const user = new User(
-      email, userId, token, expirationDate
-    );
-
-    this.user.next(user);
-    this.autoLogout(expiresIn * 1000);
-    localStorage.setItem('userData', JSON.stringify(user));
   }
 }

@@ -4,36 +4,34 @@
   </div>
   <div class="nav__body">
     <ul class="nav__menu-primary">
-      <li class="nav__item">
-        <a
-          class="nav__link"
-          routerLinkActive="active"
-          *ngIf="isAuthenticated"
-          [routerLink]="['/recipes']">Recipes</a>
+      <li *ngIf="isAuthenticated" class="nav__item">
+        <a class="nav__link"
+           [routerLink]="['/recipes']">
+          Recipes
+        </a>
       </li>
-      <li class="nav__item">
-        <a
-          class="nav__link"
-          routerLinkActive="active"
-          *ngIf="!isAuthenticated"
-          [routerLink]="['/auth']">Authenticate</a>
+      <li *ngIf="!isAuthenticated" class="nav__item" routerLinkActive="active">
+        <a class="nav__link"
+           routerLinkActive="active"
+           [routerLink]="['/auth']">
+          Authentication
+        </a>
       </li>
       <li class="nav__item" routerLinkActive="active">
-        <a
-          class="nav__link"
-          routerLinkActive="active"
-          [routerLink]="['/shopping-list']">Shopping list</a>
+        <a class="nav__link"
+           routerLinkActive="active"
+           [routerLink]="['/shopping-list']">
+          Shopping list
+        </a>
+      </li>
+      <li *ngIf="isAuthenticated" class="nav__item">
+        <a class="nav__link" (click)="onLogout()">
+          Logout
+        </a>
       </li>
     </ul>
-    <ul class="nav__menu-secondary">
-      <li class="nav__item">
-        <a
-          class="nav__link"
-          *ngIf="isAuthenticated"
-          (click)="onLogout()"
-        >Logout</a>
-      </li>
-      <li class="dropdown" *ngIf="isAuthenticated">
+    <ul *ngIf="isAuthenticated" class="nav__menu-secondary">
+      <li class="dropdown">
         <a
           class="dropdown__toggle"
           appDropdown
