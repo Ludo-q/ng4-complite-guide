@@ -70,7 +70,7 @@ export class AuthService {
     );
 
     this.user.next(newUser);
-    this.autoLogout(expiresIn);
+    this.autoLogout(expiresIn * 1000);
     localStorage.setItem('userData', JSON.stringify(newUser));
   }
 
@@ -118,6 +118,7 @@ export class AuthService {
     if (loadedUser.token) {
       this.user.next(loadedUser);
       const expirationDuration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
+      console.log(expirationDuration);
       this.autoLogout(expirationDuration);
     }
   }
