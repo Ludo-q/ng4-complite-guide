@@ -12,12 +12,12 @@ import {filter, find, tap} from 'rxjs/operators';
 })
 export class AppComponent implements OnInit {
 
-  obsA = of(1, 2, 3, 5, 7);
+  // obsA = of(1, 2, 3, 5, 7);
+  //
+  // obsB = of('a', 'b', 'c');
 
-  obsB = of('a', 'b', 'c');
-
-  arrA = [1, 2, 3, 5, 7];
-  arrB = ['a', 'b', 'c'];
+  // arrA = [1, 2, 3, 5, 7];
+  // arrB = ['a', 'b', 'c'];
 
 
   constructor(
@@ -39,16 +39,34 @@ export class AppComponent implements OnInit {
     // const obs = this.obsB.pipe(find(res => res === 'b'));
     // const result = this.arrB.find(item => item === 'b');
 
-    console.log('For each');
-    const obs = this.obsA.pipe(tap(res => console.log(res)));
+    // console.log('For each');
+    // const obs = this.obsA.pipe(tap(res => console.log(res)));
+    //
+    // console.log('Observable');
+    // // obs.subscribe(res => console.log(res));
+    // obs.subscribe();
+    //
+    // console.log('Array');
+    // // console.log(result);
+    // this.arrA.forEach(item => console.log(item));
 
-    console.log('Observable');
-    // obs.subscribe(res => console.log(res));
-    obs.subscribe();
+    const iterator = this.values();
 
-    console.log('Array');
-    // console.log(result);
-    this.arrA.forEach(item => console.log(item));
+    console.log('WE PULL ITEMS FROM ITERATOR');
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+
+    const observable = new Observable(subscriber => {
+      // Pushing values
+      subscriber.next(1);
+      subscriber.next(2);
+      subscriber.next(3);
+    });
+
+    console.log('OBSERVABLE PUSH VALUES TO THE HANDLER');
+    observable.subscribe(val => console.log(val));
 
   }
 
@@ -56,4 +74,13 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.authService.autoSignIn();
   }
+
+  * values() {
+    // Pushing values
+    yield 1;
+    yield 2;
+    yield 3;
+  }
+
+
 }
