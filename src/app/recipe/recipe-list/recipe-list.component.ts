@@ -19,31 +19,32 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   @Output() recipeWasSelected = new EventEmitter<Recipe>();
 
   // Creation
-  customObs = new Observable((observer) => {
+  customObs = new Observable<number>((observer) => {
     observer.next(1);
     observer.next(2);
     observer.next(3);
     observer.next(4);
   }).pipe(
-    map(res => {
-      console.log(`Observable: ${res}`);
-    })
+    map(res => res * 2),
+    map(res => console.log(`Observable transform: ${res}`))
   );
 
-  customPro = new Promise((resolve, reject) => {
+  customPro = new Promise<number>((resolve, reject) => {
     resolve(2);
     resolve(3);
     resolve(4);
   });
+
+  subCustomObs: Subscription;
 
   constructor(
     private recipeService: RecipeService,
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.customObs.subscribe();
+    this.subCustomObs = this.customObs.subscribe();
     this.customPro.then(res => {
-      console.log(`Promise: ${res}`);
+      console.log(`Promise transform: ${res * 2}`);
     });
   }
 
@@ -62,5 +63,6 @@ export class RecipeListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+    this.subCustomObs.unsubscribe();
   }
 }
