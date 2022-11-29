@@ -3,6 +3,25 @@
     class="btn btn--green u-m-b-small"
     (click)="onNewRecipe()"
   >New Recipe</button>
+
+  <button
+    id="btn-promise"
+    class="btn btn--green u-m-b-small"
+  >Click Me Promise</button>
+
+  <button
+    id="btn-observable"
+    class="btn btn--green u-m-b-small"
+  >Click Me Observable</button>
+
+  <div class="form__body">
+    <label class="form__label" for="in-promise">Promise input</label>
+    <input class="form__input" id="in-promise">
+
+    <label class="form__label" for="in-observable">Observable input</label>
+    <input class="form__input" id="in-observable">
+  </div>
+
 </div>
 <div>
   <app-recipe-item

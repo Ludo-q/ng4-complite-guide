@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Observable, Subscription} from 'rxjs';
+import {fromEvent, Observable, Subscription} from 'rxjs';
 
 import {Recipe} from '../recipe.model';
 import {RecipeService} from '../recipe.service';
@@ -18,34 +18,11 @@ export class RecipeListComponent implements OnInit, OnDestroy {
 
   @Output() recipeWasSelected = new EventEmitter<Recipe>();
 
-  // Creation
-  customObs = new Observable<number>((observer) => {
-    observer.next(1);
-    observer.next(2);
-    observer.next(3);
-    observer.next(4);
-  }).pipe(
-    map(res => res * 2),
-    map(res => console.log(`Observable transform: ${res}`))
-  );
-
-  customPro = new Promise<number>((resolve, reject) => {
-    resolve(2);
-    resolve(3);
-    resolve(4);
-  });
-
-  subCustomObs: Subscription;
-
   constructor(
     private recipeService: RecipeService,
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.subCustomObs = this.customObs.subscribe();
-    this.customPro.then(res => {
-      console.log(`Promise transform: ${res * 2}`);
-    });
   }
 
   ngOnInit() {
@@ -55,6 +32,48 @@ export class RecipeListComponent implements OnInit, OnDestroy {
         this.recipes = recipes;
       }
     );
+
+    const btnPromise = document.getElementById('btn-promise');
+    const btnObs = document.getElementById('btn-observable');
+
+    const inPromise = document.getElementById('in-promise');
+    const inObs = document.getElementById('in-observable');
+
+
+    function handler(e) {
+      console.log(`Clicked Promise: `, e);
+    }
+
+    // setup and listening promise
+    btnPromise.addEventListener('click', handler);
+
+    // setup observable
+    const click$ = fromEvent(btnObs, 'click');
+    // listening observable
+    const subscriptionBtn = click$.subscribe(e => console.log('Clicked Observable: ', e));
+
+    // configuration observable
+    const input$ = fromEvent(inObs, 'keydown').pipe(map(e => (e.target as HTMLInputElement).value));
+
+    const subscriptionIn = input$.subscribe(target => console.log('Observable Input Value: ', target));
+
+    // configuration observable (is not possible before the handler)
+    function handlerIn(e) {
+      console.log('Promise Input Value: ', e.target.value);
+    }
+
+    inPromise.addEventListener('keydown', handlerIn);
+
+
+    // remove listening to Promise & Observable
+
+    setTimeout(() => {
+      btnPromise.removeEventListener('click', handler);
+      inPromise.removeEventListener('keydown', handlerIn);
+      subscriptionBtn.unsubscribe();
+      subscriptionIn.unsubscribe();
+    }, 10000);
+
   }
 
   onNewRecipe() {
@@ -63,6 +82,5 @@ export class RecipeListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
-    this.subCustomObs.unsubscribe();
   }
 }
