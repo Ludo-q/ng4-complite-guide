@@ -1,6 +1,12 @@
-# Ng4CompliteGuide
+# Ng4 Complete Guide
+
+## Description
+
+> This repository is created only for education/practical porpuse. \
+> This repository is created based on the online course [Angular - The Complete Guide](https://www.udemy.com/course/the-complete-guide-to-angular-2/)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
+
 
 ## Development server
 
