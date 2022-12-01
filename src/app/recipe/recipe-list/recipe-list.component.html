@@ -6,8 +6,8 @@
 </div>
 <div>
   <app-recipe-item
-    *ngFor="let recipeEl of recipes$ | async; let i = index"
-    [recipe]="recipeEl"
-    [recipeIndex]="i"
+    *ngFor="let recipeEl of recipes$ | async | keyvalue:orderByRecipeName;"
+    [recipe]="recipeEl.value"
+    [recipeIndex]="+recipeEl.key"
   ></app-recipe-item>
 </div>

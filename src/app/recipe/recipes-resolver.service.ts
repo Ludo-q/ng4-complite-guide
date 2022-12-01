@@ -6,7 +6,8 @@ import {DataStorageService} from '../shared/data-storage.service';
 import {RecipeService} from './recipe.service';
 
 @Injectable({providedIn: 'root'})
-export class RecipesResolverService implements Resolve<Recipe[]> {
+// export class RecipesResolverService implements Resolve<Recipe[]> {
+export class RecipesResolverService implements Resolve<{ [key: number]: Recipe }> {
   constructor(
     private dataStorageService: DataStorageService,
     private recipesService: RecipeService
@@ -16,7 +17,9 @@ export class RecipesResolverService implements Resolve<Recipe[]> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const recipes = this.recipesService.getRecipes();
 
-    if (recipes.length === 0) {
+    // if (recipes.length === 0) {
+    // if (Object.keys(recipes).length === 0) {
+    if (recipes.size === 0) {
       return this.dataStorageService.fetchRecipes();
     } else {
       return recipes;
