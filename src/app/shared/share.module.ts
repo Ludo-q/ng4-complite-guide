@@ -6,25 +6,32 @@ import {LoadingSpinnerComponent} from './loading-spinner/loading-spinner.compone
 import {PlaceholderDirective} from './placeholder/placeholder.directive';
 import {DropdownDirective} from './dropdown.derective';
 import {LoggingService} from '../logging.service';
+import {RecipeByIngredientsPipe, TruncateByCharPipe, TruncateByWordPipe} from './pipe-custom.pipe';
 
 @NgModule({
-    declarations: [
-        AlertComponent,
-        LoadingSpinnerComponent,
-        PlaceholderDirective,
-        DropdownDirective
-    ],
-    imports: [
-        CommonModule
-    ],
-    exports: [
-        AlertComponent,
-        LoadingSpinnerComponent,
-        PlaceholderDirective,
-        DropdownDirective,
-        CommonModule
-    ],
-    providers: [LoggingService]
+  declarations: [
+    AlertComponent,
+    LoadingSpinnerComponent,
+    PlaceholderDirective,
+    DropdownDirective,
+    TruncateByCharPipe,
+    TruncateByWordPipe,
+    RecipeByIngredientsPipe,
+  ],
+  imports: [
+    CommonModule
+  ],
+  exports: [
+    AlertComponent,
+    LoadingSpinnerComponent,
+    PlaceholderDirective,
+    DropdownDirective,
+    CommonModule,
+    TruncateByCharPipe,
+    TruncateByWordPipe,
+    RecipeByIngredientsPipe,
+  ],
+  providers: [LoggingService]
 })
 export class ShareModule {
 

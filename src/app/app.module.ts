@@ -7,8 +7,6 @@ import {FormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {ShareModule} from './shared/share.module';
-import {CoreModule} from './core.module';
-import {ShortenPipe} from './pipe-custom.pipe';
 import {AuthComponent} from './auth/auth.component';
 import {AuthInterceptorService} from './auth/auth-interceptor.service';
 
@@ -16,15 +14,13 @@ import {AuthInterceptorService} from './auth/auth-interceptor.service';
   declarations: [
     AppComponent,
     HeaderComponent,
-    ShortenPipe,
     AuthComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({appId: 'serverApp'}),
+    BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     ShareModule,
-    CoreModule,
     FormsModule,
   ],
   providers: [
