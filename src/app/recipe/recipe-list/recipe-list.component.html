@@ -6,7 +6,7 @@
 </div>
 <div>
   <app-recipe-item
-    *ngFor="let recipeEl of recipes; let i = index"
+    *ngFor="let recipeEl of recipes$ | async; let i = index"
     [recipe]="recipeEl"
     [recipeIndex]="i"
   ></app-recipe-item>
