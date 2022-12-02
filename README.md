@@ -7,6 +7,20 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
 
+## Internationalization
+
+**LOCALES**
+
+1. Shqip{name} - sq{code} 
+
+>_In the terminal,_\
+`ng extract-i18n --output-path src/locale` - generate (update src/locale/messages.xlf): \
+Copy the generated file with e new name, messages{code}.xlf:\
+`cp .\src\locale\messages.xlf .\src\locale\messages.{code}.xlf`\
+To support another locale.
+
+For more info see [Angular Internationalization](https://angular.io/guide/i18n-overview)
+
 
 ## Development server
 

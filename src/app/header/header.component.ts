@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 
 import {DataStorageService} from '../shared/data-storage.service';
 import {AuthService} from '../auth/auth.service';
+import {interval} from '@reactivex/rxjs/dist/package';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +13,7 @@ import {AuthService} from '../auth/auth.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
+  currentDate: Date;
   private userSub: Subscription;
 
   constructor(
@@ -27,6 +29,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.isAuthenticated = !!user;
       }
     );
+
+    interval(1000).subscribe(() => this.currentDate = new Date());
   }
 
   onSaveData() {

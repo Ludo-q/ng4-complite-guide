@@ -50,6 +50,11 @@
     }
   }
 
+  &__menu-date {
+    @extend %link;
+    padding: 2rem;
+  }
+
   &__menu-secondary {
     @extend %u-list;
     display: flex;

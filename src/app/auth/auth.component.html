@@ -11,7 +11,7 @@
       #authForm="ngForm"
       (ngSubmit)="onSubmit(authForm)">
   <div class="form__body u-m-b-medium">
-    <label for="email" class="form__label">Email</label>
+    <label i18n for="email" class="form__label">Email</label>
     <input
       class="form__input"
       type="email"
@@ -23,7 +23,7 @@
       email
     >
 
-    <label for="password" class="form__label">Password</label>
+    <label i18n for="password" class="form__label">Password</label>
     <input
       class="form__input"
       type="password"
@@ -37,12 +37,12 @@
   </div>
 
   <div class="form__footer">
-    <button class="btn btn--green"
+    <button i18n class="btn btn--green"
             type="submit"
             [disabled]="!authForm.valid">
       {{isLoginMode ? 'Login' : 'Sign up'}}
     </button>
-    <button class="btn btn--green"
+    <button i18n class="btn btn--green"
             type="button"
             (click)="onSwitchMode()">
       Switch to {{isLoginMode ? 'sing up' : 'login'}}

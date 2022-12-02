@@ -1,6 +1,6 @@
 <form class="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
   <div class="form__body">
-    <label for="name" class="form__label">Name</label>
+    <label i18n for="name" class="form__label">Name</label>
     <input
       type="text"
       class="form__input"
@@ -10,7 +10,7 @@
       ngModel
       required
     >
-    <label for="amount" class="form__label">Amount</label>
+    <label i18n for="amount" class="form__label">Amount</label>
     <input
       type="number"
       class="form__input"
@@ -23,18 +23,18 @@
     >
   </div>
   <div class="form__footer">
-    <button
+    <button i18n
       class="btn btn--green"
       type="submit"
       [disabled]="!f.valid"
     >{{editMode ? 'Update' : 'Add'}}</button>
-    <button
+    <button i18n
       class="btn btn--red"
       type="button"
       *ngIf="editMode"
       (click)="onDelete()"
     >Delete</button>
-    <button
+    <button i18n
       class="btn btn--grey"
       type="button"
       (click)="onClear()"

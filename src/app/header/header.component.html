@@ -5,43 +5,48 @@
   <div class="nav__body">
     <ul class="nav__menu-primary">
       <li *ngIf="isAuthenticated" class="nav__item">
-        <a class="nav__link"
+        <a i18n class="nav__link"
            [routerLink]="['/recipes']">
           Recipes
         </a>
       </li>
       <li *ngIf="!isAuthenticated" class="nav__item" routerLinkActive="active">
-        <a class="nav__link"
+        <a i18n class="nav__link"
            routerLinkActive="active"
            [routerLink]="['/auth']">
           Authentication
         </a>
       </li>
       <li class="nav__item" routerLinkActive="active">
-        <a class="nav__link"
+        <a i18n class="nav__link"
            routerLinkActive="active"
            [routerLink]="['/shopping-list']">
           Shopping list
         </a>
       </li>
       <li *ngIf="isAuthenticated" class="nav__item">
-        <a class="nav__link" (click)="onLogout()">
+        <a i18n class="nav__link" (click)="onLogout()">
           Logout
         </a>
       </li>
     </ul>
+
+    <div class="nav__menu-date">
+      Date: {{currentDate | date}}
+    </div>
+
     <ul *ngIf="isAuthenticated" class="nav__menu-secondary">
       <li class="dropdown">
-        <a
+        <a i18n
           class="dropdown__toggle"
           appDropdown
         >Manage</a>
         <ul class="dropdown__menu">
           <li class="dropdown__item">
-            <a class="dropdown__link" (click)="onSaveData()">Save Data</a>
+            <a i18n class="dropdown__link" (click)="onSaveData()">Save Data</a>
           </li>
           <li class="dropdown__item">
-            <a class="dropdown__link" (click)="onFetchData()">Fetch Data</a>
+            <a i18n class="dropdown__link" (click)="onFetchData()">Fetch Data</a>
           </li>
         </ul>
       </li>

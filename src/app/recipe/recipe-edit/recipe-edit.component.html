@@ -4,26 +4,26 @@
   (ngSubmit)="onSubmit()"
 >
   <div class="form__footer u-m-b-medium">
-    <button
+    <button i18n
       type="submit"
       class="btn btn--green"
       [disabled]="!recipeForm.valid"
     >Save</button>
-    <button
+    <button i18n
       type="button"
       class="btn btn--red"
       (click)="onCancel()"
     >Cancel</button>
   </div>
   <div class="form__body">
-    <label for="name" class="form__label">Name</label>
+    <label i18n for="name" class="form__label">Name</label>
     <input
       type="text"
       class="form__input"
       id="name"
       formControlName="name"
     >
-    <label for="imagePath" class="form__label">Image URL</label>
+    <label i18n for="imagePath" class="form__label">Image URL</label>
     <input
       type="text"
       class="form__input"
@@ -32,7 +32,7 @@
       #imagePath
     >
     <img [src]="imagePath.value" class="form__img">
-    <label for="description" class="form__label">Description</label>
+    <label i18n for="description" class="form__label">Description</label>
     <textarea
       id="description"
       class="form__input"
@@ -43,7 +43,7 @@
       class="form__input--full list-div"
       formArrayName="ingredients"
     >
-      <h3 class="ternary-heading u-center-text">
+      <h3 i18n class="ternary-heading u-center-text">
         Ingredients
       </h3>
       <div
@@ -67,7 +67,7 @@
           (click)="onDeleteIngredient(i)"
         >X</button>
       </div>
-      <button
+      <button i18n
         class="btn btn--green u-m-t-small"
         type="button"
         (click)="onAddIngredient()"

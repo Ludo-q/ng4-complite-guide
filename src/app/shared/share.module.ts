@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, DATE_PIPE_DEFAULT_TIMEZONE} from '@angular/common';
 
 import {AlertComponent} from './alert/alert.component';
 import {LoadingSpinnerComponent} from './loading-spinner/loading-spinner.component';
@@ -31,7 +31,12 @@ import {RecipeByIngredientsPipe, TruncateByCharPipe, TruncateByWordPipe} from '.
     TruncateByWordPipe,
     RecipeByIngredientsPipe,
   ],
-  providers: [LoggingService]
+  providers: [
+    // { TODO Try to fix the format by default
+    //   provide: DATE_PIPE_DEFAULT_TIMEZONE,
+    //   useValue: {dateFormat: 'dd:MM:yyyy', timezone: 'WET'}
+    // }
+  ]
 })
 export class ShareModule {
 

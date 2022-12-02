@@ -4,6 +4,12 @@
   "newProjectRoot": "projects",
   "projects": {
     "ng4-complite-guide": {
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "sq": "src/locale/messages.al.xlf"
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,6 +26,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "localize": ["sq"],
             "outputPath": "dist/ng4-complite-guide",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -112,5 +119,8 @@
       }
     }
   },
-  "defaultProject": "ng4-complite-guide"
+  "defaultProject": "ng4-complite-guide",
+  "cli": {
+    "analytics": "c38a2751-08d1-44c5-98f3-d4afab73af35"
+  }
 }
