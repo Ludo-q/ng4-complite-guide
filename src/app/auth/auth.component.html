@@ -37,15 +37,18 @@
   </div>
 
   <div class="form__footer">
-    <button i18n class="btn btn--green"
+    <button class="btn btn--green"
             type="submit"
             [disabled]="!authForm.valid">
-      {{isLoginMode ? 'Login' : 'Sign up'}}
+      <ng-container i18n *ngIf="isLoginMode">Login</ng-container>
+      <ng-container i18n *ngIf="!isLoginMode">Sign up</ng-container>
     </button>
-    <button i18n class="btn btn--green"
+    <button class="btn btn--green"
             type="button"
             (click)="onSwitchMode()">
-      Switch to {{isLoginMode ? 'sing up' : 'login'}}
+      <ng-container i18n>Switch to</ng-container>
+      <ng-container i18n *ngIf="isLoginMode">sing up</ng-container>
+      <ng-container i18n *ngIf="!isLoginMode">login</ng-container>
     </button>
   </div>
 </form>

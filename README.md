@@ -9,7 +9,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Internationalization
 
-**LOCALES**
+### **LOCALES**
 
 1. Shqip{name} - sq{code} 
 
@@ -20,6 +20,10 @@ Copy the generated file with e new name, messages{code}.xlf:\
 To support another locale.
 
 For more info see [Angular Internationalization](https://angular.io/guide/i18n-overview)
+
+### Notes
+
+> In the template use <ng-container> instead of a ternary operator.
 
 
 ## Development server

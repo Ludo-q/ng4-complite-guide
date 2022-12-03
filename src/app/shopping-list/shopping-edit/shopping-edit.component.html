@@ -23,21 +23,26 @@
     >
   </div>
   <div class="form__footer">
+    <button class="btn btn--green"
+            type="submit"
+            [disabled]="!f.valid">
+      <ng-container i18n *ngIf="editMode">Update</ng-container>
+      <ng-container i18n *ngIf="!editMode">Add</ng-container>
+    </button>
+
     <button i18n
-      class="btn btn--green"
-      type="submit"
-      [disabled]="!f.valid"
-    >{{editMode ? 'Update' : 'Add'}}</button>
+            class="btn btn--red"
+            type="button"
+            *ngIf="editMode"
+            (click)="onDelete()">
+      Delete
+    </button>
+
     <button i18n
-      class="btn btn--red"
-      type="button"
-      *ngIf="editMode"
-      (click)="onDelete()"
-    >Delete</button>
-    <button i18n
-      class="btn btn--grey"
-      type="button"
-      (click)="onClear()"
-    >Clear</button>
+            class="btn btn--grey"
+            type="button"
+            (click)="onClear()">
+      Clear
+    </button>
   </div>
 </form>

@@ -18,20 +18,44 @@
           <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="35ec6871b57a55e53cc3d457c4d40b14fbd9d713" datatype="html">
-        <source> <x id="INTERPOLATION" equiv-text="{{isLoginMode ? &apos;Login&apos; : &apos;Sign up&apos;}}"/> </source>
-        <target> <x id="INTERPOLATION" equiv-text="{{isLoginMode ? &apos;Hyr&apos; : &apos;Rregjistrohu&apos;}}"/> </target>
+      <trans-unit id="6765b4c916060f6bc42d9bb69e80377dbcb5e4e9" datatype="html">
+        <source>Login</source>
+        <target>Hyr</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/auth.component.html</context>
-          <context context-type="linenumber">42,44</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="5e47ed859cefda68f30a0dc54af1f7fec1a9ed9a" datatype="html">
-        <source> Switch to <x id="INTERPOLATION" equiv-text="{{isLoginMode ? &apos;sing up&apos; : &apos;login&apos;}}"/> </source>
-        <target> Kalo tek <x id="INTERPOLATION" equiv-text="{{isLoginMode ? &apos;rregjistrohu&apos; : &apos;hyr&apos;}}"/> </target>
+      <trans-unit id="c40c132843f349c3aa49730405de1d0ca733aef6" datatype="html">
+        <source>Sign up</source>
+        <target>Regjistrohu</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/auth.component.html</context>
-          <context context-type="linenumber">47,49</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8c3cbeb1fe26086eb3f47dc1f5553525de8cac09" datatype="html">
+        <source>Switch to</source>
+        <target>Kalo tek </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/auth.component.html</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="99901767e8ca5b3b032be6ac8b1b015c113b2cb7" datatype="html">
+        <source>sing up</source>
+        <target>regjistrohu</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/auth.component.html</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="801c464dfaabb8eb2c16f2cc0bf81435030174dd" datatype="html">
+        <source>login</source>
+        <target>hyr</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/auth.component.html</context>
+          <context context-type="linenumber">51</context>
         </context-group>
       </trans-unit>
       <trans-unit id="0b7de1838861dcc92dc015582add6e08925779e9" datatype="html">
@@ -202,28 +226,36 @@
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="9999cad2b292560ff9a575c02545562b6f134cfd" datatype="html">
-        <source><x id="INTERPOLATION" equiv-text="{{editMode ? &apos;Update&apos; : &apos;Add&apos;}}"/></source>
-        <target><x id="INTERPOLATION" equiv-text="{{editMode ? &apos;Ndrysho&apos; : &apos;Shto&apos;}}"/></target>
+      <trans-unit id="047f50bc5b5d17b5bec0196355953e1a5c590ddb" datatype="html">
+        <source>Update</source>
+        <target>Modifiko</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shopping-list/shopping-edit/shopping-edit.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f6755cff4957d5c3c89bafce5651f1b6fa2b1fd9" datatype="html">
+        <source>Add</source>
+        <target>Shto</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shopping-list/shopping-edit/shopping-edit.component.html</context>
           <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="826b25211922a1b46436589233cb6f1a163d89b7" datatype="html">
-        <source>Delete</source>
-        <target>Fshij</target>
+      <trans-unit id="d9797b7f7d130802253f3bdd06f7da9f474816af" datatype="html">
+        <source> Delete </source>
+        <target> Fshij </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shopping-list/shopping-edit/shopping-edit.component.html</context>
-          <context context-type="linenumber">36</context>
+          <context context-type="linenumber">37,39</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="99ee4faa69cd2ea8e3678c1f557c0ff1f05aae46" datatype="html">
-        <source>Clear</source>
-        <target>Pastro</target>
+      <trans-unit id="8acade288f9839d6f6beba3a0aaa1d4e35b3981c" datatype="html">
+        <source> Clear </source>
+        <target> Pastro </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shopping-list/shopping-edit/shopping-edit.component.html</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">44,46</context>
         </context-group>
       </trans-unit>
     </body>
