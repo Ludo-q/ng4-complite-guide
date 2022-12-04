@@ -1,6 +1,4 @@
 import {Recipe} from './recipe.model';
-import {Observable} from 'rxjs';
-import {of} from '@reactivex/rxjs/dist/package';
 
 const RECIPE_MAP_DATA: Map<number, Recipe> = new Map();
 const RECIPE_OBJ_DATA: {[key: number]: Recipe} = {};

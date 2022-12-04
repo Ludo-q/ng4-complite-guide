@@ -1,10 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from 'rxjs';
+import {Subscription, interval} from 'rxjs';
 import {Router} from '@angular/router';
 
 import {DataStorageService} from '../shared/data-storage.service';
 import {AuthService} from '../auth/auth.service';
-import {interval} from '@reactivex/rxjs/dist/package';
 
 @Component({
   selector: 'app-header',
