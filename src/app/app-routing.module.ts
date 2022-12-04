@@ -7,7 +7,8 @@ const routes: Routes = [
   {path: '', redirectTo: '/recipes', pathMatch: 'full'},
   {path: 'auth', component: AuthComponent},
   {path: 'recipes', loadChildren: () => import('./recipe/recipe.module').then(m => m.RecipeModule)},
-  {path: 'shopping-list', loadChildren: () => import('./shopping-list/shopping-list.module').then(m => m.ShoppingListModule)}
+  {path: 'shopping-list', loadChildren: () => import('./shopping-list/shopping-list.module').then(m => m.ShoppingListModule)},
+  { path: 'rxjs-examples', loadChildren: () => import('./rxjs-examples/rxjs-examples.module').then(m => m.RxjsExamplesModule) }
 ];
 
 

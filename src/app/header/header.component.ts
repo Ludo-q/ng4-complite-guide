@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   currentDate: Date;
   private userSub: Subscription;
+  private timeSub: Subscription;
 
   constructor(
     private dataStorageService: DataStorageService,
@@ -30,7 +31,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       }
     );
 
-    interval(1000).subscribe(() => this.currentDate = new Date());
+    this.timeSub = interval(10000).subscribe(() => this.currentDate = new Date());
   }
 
   onSaveData() {
@@ -48,5 +49,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.userSub.unsubscribe();
+    this.timeSub.unsubscribe();
   }
 }
