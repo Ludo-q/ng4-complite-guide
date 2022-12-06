@@ -1,4 +1,22 @@
 <h1 i18n class="primary-heading u-center-text u-m-t-small">
   Working with RXJS
 </h1>
-
+<nav class="nav">
+  <div class="nav__header">
+    <a i18n
+       class="nav__link"
+       [routerLink]="['rxjs-examples']">
+      RXJS Examples
+    </a>
+  </div>
+  <ul class="nav-menu-secondary">
+    <a i18n
+       class="nav__link"
+       [routerLink]="['./creation-operators']">
+      Creation operators
+    </a>
+  </ul>
+</nav>
+<section class="rxjs-examples-section">
+  <router-outlet></router-outlet>
+</section>

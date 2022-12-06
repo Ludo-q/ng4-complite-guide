@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {fromEvent, scan, throttleTime} from 'rxjs';
-import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-rxjs-examples',
@@ -73,10 +71,23 @@ export class RxjsExamplesComponent implements OnInit {
     // });
 
     // with rxjs
-    fromEvent(document, 'click').pipe(
-      throttleTime(1000),
-      map((event: MouseEvent) => event.clientX),
-      scan((count, client) => count + client, 0)
-    ).subscribe(count => console.log(count));
+    // fromEvent(document, 'click').pipe(
+    //   throttleTime(1000),
+    //   map((event: MouseEvent) => event.clientX),
+    //   scan((count, client) => count + client, 0)
+    // ).subscribe(count => console.log(count));
+
+    ////////////////////////////////////////////////////////
+    // Higher-order Observables
+
+    // const numberObservable = of(1, 2, 3, 4);
+    // const interval$ = interval(1500);
+    //
+    // interval$.pipe(
+    //   map(num => of(num)),
+    //   concatAll(),
+    //   throttleTime(1000),
+    // ).subscribe(numObs => console.log(numObs));
+
   }
 }

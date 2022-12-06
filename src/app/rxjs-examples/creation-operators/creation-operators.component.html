@@ -1,0 +1,16 @@
+<p class="paragraph u-m-t-small">
+  What are creation operators?
+</p>
+<p class="paragraph u-center-text">
+  Distinct from pipeable operators, creation operators
+  are function that can be used to create an observable with common predefined
+  behavior or by joining other Observables.
+</p>
+
+<ul class="list-div"
+    *ngIf="numbers$ | async as numbers">
+  <li class="list-div__item" *ngFor="let num of numbers"
+      [style.font-size]="(num * 2 + 20) + 'px'">
+    {{num}}
+  </li>
+</ul>
