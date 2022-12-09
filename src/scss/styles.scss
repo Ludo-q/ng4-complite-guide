@@ -1,9 +1,10 @@
 @import "abstracts/variable";
-@import "abstracts/extends";
+@import "abstracts/extend";
 
 @import "base/base";
 @import "base/typography";
 @import "base/utility";
+@import "base/grid";
 
 @import "layout/header";
 @import "layout/navigation";

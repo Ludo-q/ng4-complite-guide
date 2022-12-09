@@ -1,5 +1,5 @@
-@import "../abstracts/variable";
-@import "../abstracts/extends";
+@use "../abstracts/variable" as var;
+@import "../abstracts/extend";
 
 .list-group,
 .list-button {
@@ -16,7 +16,7 @@
 }
 
 .list-group {
-  color: $color-font-primary;
+  color: var.$color-font-primary;
 }
 
 .list-div {
@@ -31,10 +31,17 @@
     display: grid;
     grid-template-rows: 1fr;
     row-gap: 2rem;
+    text-align: center;
+    color: var.$color-font-tertiary;
 
     & > button,
     & > input {
       justify-self: center;
+    }
+
+    & > .paragraph {
+      font-size: 3rem;
+      color: var.$color-font-secondary;
     }
   }
 }

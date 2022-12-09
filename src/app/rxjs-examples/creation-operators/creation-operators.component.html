@@ -7,18 +7,35 @@
   behavior or by joining other Observables.
 </p>
 
-<!--<ul class="list-div"-->
-<!--    *ngIf="numbers$ | async as numbers">-->
-<!--  <li class="list-div__item" *ngFor="let num of numbers"-->
-<!--      [style.font-size]="(num * 2 + 20) + 'px'">-->
-<!--    {{num}}-->
-<!--  </li>-->
-<!--</ul>-->
+<div class="l-grid-2">
+  <ul class="list-div"
+      *ngIf="oddNumbers">
+    <li class="list-div__item list-div__header">
+      <p class="paragraph">Odd</p>
+    </li>
+    <li class="list-div__item" *ngFor="let num of oddNumbers"
+        [style.font-size]="(num * 2 + 20) + 'px'">
+      {{num}}
+    </li>
+  </ul>
+
+  <ul class="list-div"
+      *ngIf="oddNumbers">
+    <li class="list-div__item list-div__header">
+      <p class="paragraph">Even</p>
+    </li>
+    <li class="list-div__item" *ngFor="let num of evenNumbers"
+        [style.font-size]="(num * 2 + 20) + 'px'">
+      {{num}}
+    </li>
+  </ul>
+</div>
+
 <!--<p class="paragraph">Value of random number is: {{randomNumber}}</p>-->
 
-<ul class="list-div"
-    *ngIf="titles">
-  <li class="list-div__item" *ngFor="let title of titles">
-    <p class="paragraph">{{title}}</p>
-  </li>
-</ul>
+<!--<ul class="list-div"-->
+<!--    *ngIf="titles">-->
+<!--  <li class="list-div__item" *ngFor="let title of titles">-->
+<!--    <p class="paragraph">{{title}}</p>-->
+<!--  </li>-->
+<!--</ul>-->

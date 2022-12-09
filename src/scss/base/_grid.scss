@@ -1,0 +1,11 @@
+@use "../abstracts/variable" as var;
+
+.l-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+
+  background-color: lighten(var.$color-background-primary, 20%);
+
+  padding: 10px 30px 30px 30px;
+}
