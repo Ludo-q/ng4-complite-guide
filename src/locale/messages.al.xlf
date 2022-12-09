@@ -278,6 +278,14 @@
           <context context-type="linenumber">15,17</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="ce785eb8b96eca594ac3dc7a4ea81fa2a6a30648" datatype="html">
+        <source> Join Creation operators </source>
+        <target> Operatoret Bashkues & Krijues </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/rxjs-examples/rxjs-examples.component.html</context>
+          <context context-type="linenumber">22,24</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="dfc2fb58e2a04ed944a4bd80f0a2087775134068" datatype="html">
         <source>Amount</source>
         <target>Sasia</target>
