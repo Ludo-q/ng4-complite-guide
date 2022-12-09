@@ -7,10 +7,18 @@
   behavior or by joining other Observables.
 </p>
 
+<!--<ul class="list-div"-->
+<!--    *ngIf="numbers$ | async as numbers">-->
+<!--  <li class="list-div__item" *ngFor="let num of numbers"-->
+<!--      [style.font-size]="(num * 2 + 20) + 'px'">-->
+<!--    {{num}}-->
+<!--  </li>-->
+<!--</ul>-->
+<!--<p class="paragraph">Value of random number is: {{randomNumber}}</p>-->
+
 <ul class="list-div"
-    *ngIf="numbers$ | async as numbers">
-  <li class="list-div__item" *ngFor="let num of numbers"
-      [style.font-size]="(num * 2 + 20) + 'px'">
-    {{num}}
+    *ngIf="titles">
+  <li class="list-div__item" *ngFor="let title of titles">
+    <p class="paragraph">{{title}}</p>
   </li>
 </ul>
