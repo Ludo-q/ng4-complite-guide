@@ -27,6 +27,16 @@
   grid-template-columns: 1fr;
   gap: 2rem;
 
+  &__header {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    & > .paragraph {
+      font-weight: bold;
+      font-size: 3rem;
+    }
+  }
+
   &__item {
     display: grid;
     grid-template-rows: 1fr;
@@ -43,5 +53,17 @@
       font-size: 3rem;
       color: var.$color-font-secondary;
     }
+
+    &--2col {
+      text-align: left;
+      grid-template-columns: repeat(2, 1fr);
+
+      background-color: var.$color-background-light;
+      padding: 10px 5px;
+    }
+  }
+
+  &__text {
+    font-size: 1.8rem;
   }
 }
